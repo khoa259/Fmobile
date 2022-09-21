@@ -1,15 +1,24 @@
-import { useState } from 'react'
+import { useState ,useEffect} from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import { ProductsType } from './pages/types/ProductsType'
+import { getAll } from './api/products'
+import ProductsPage from './pages/client/Products/ProductsPage'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [products, setProducts]  = useState <ProductsType[]>([])
+  useEffect(() => {
+    const getProducts = async () =>{
+      const {data} = await getAll()
+      setProducts(data)
+    }
+    getProducts()
+  },[])
+  
+  
   return (
     <div className="App">
-       <h1 className="text-3xl font-bold underline bg-blue-500">
-      Hello world!
-    </h1>
+      <ProductsPage product={products}/>
     </div>
   )
 }
