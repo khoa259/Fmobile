@@ -6,6 +6,7 @@ import { getAll } from './api/products'
 import ProductsPage from './pages/client/Products/ProductsPage'
 import { Routes, Route } from 'react-router-dom'
 import WebsiteLayout from './pages/Layout/WebsiteLayout'
+import Homepage from './pages/client/Homepage/Homepage'
 
 function App() {
   const [products, setProducts] = useState<ProductsType[]>([])
@@ -22,6 +23,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<WebsiteLayout />} >
+          <Route index element={<Homepage/>}/>
           <Route path='/iphone' element={<h1>Iphone Page</h1>}/>
           <Route path='/mac' element={<h1>MacBook page</h1>}/>
           <Route path='/imac' element={<h1>Imac page</h1>}/>
