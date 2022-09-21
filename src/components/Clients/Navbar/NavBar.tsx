@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Search from '../../Search/Search'
 import { MenuList } from './data-menu'
 
 type Props = {}
@@ -7,21 +8,21 @@ type Props = {}
 const NavBar = (props: Props) => {
   return (
     <div>
-      <nav className="bg-zinc-600 px-3 border-gray-200 dark:bg-gray-900">
-        <div className="container flex flex-wrap justify-between items-center mx-auto">
+      <nav className="bg-zinc-900 px-3 py-4 border-gray-200 dark:bg-gray-900 " >
+        <div className="container flex flex-wrap justify-around  items-center mx-auto">
           <a href="/" className="flex items-center">
             <img src="https://fmobileapi.groupe-minaste.org/assets/logo.png" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
           </a>
+            <Search/>
           <div className="flex items-center md:order-2 ">
-            <button type="button" className="relative flex mr-3 text-sm rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" >
-              <svg className="w-9 h-9 text-white bg-zinc-600 mr-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            <button type="button" className="relative flex mr-3 text-sm rounded-full " >
+              <svg className="w-9 h-9 text-white bg-zinc-900 mr-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
               <span className="top-5 left-7 absolute w-6 h-6 bg-white border-2 border-white dark:border-gray-800 rounded-full font-bold">1</span>
             </button>
             <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
               <span className="sr-only">Open user menu</span>
               <img className="w-9 h-9 rounded-full" src="https://cdn-icons-png.flaticon.com/512/147/147142.png" alt="user photo" />
             </button>
-           
             {/* Dropdown menu */}
             <div className="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown" data-popper-reference-hidden data-popper-escaped data-popper-placement="bottom" style={{ position: 'absolute', inset: '0px auto auto 0px', margin: 0, transform: 'translate(0px, 7905px)' }}>
               <div className="py-3 px-4">
@@ -41,17 +42,17 @@ const NavBar = (props: Props) => {
               <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" /></svg>
             </button>
           </div>
-          <div className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
-            <ul className="flex flex-col md:flex-row md:mx-8 md:mt-0 md:text-sm md:font-medium md:border-0 md: dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        </div>
+      </nav>
+      <div className=" justify-between items-center w-full md:flex md:w-auto md:order-1 bg-zinc-600" id="mobile-menu-2">
+            <ul className="mx-auto">
               {MenuList.map((data, index) => (
-                <li key={index} className='block py-3 px-5 px-5 hover:bg-neutral-700 '>
-                  <Link to={data.path} className="text-white block py-2 px-4 text-sm font-normal dark:hover: dark:text-gray-200 dark:hover:text-white">{data.label}</Link>
+                <li key={index} className='inline-block py-3 px-5 h-16 md:px-2 hover:bg-zinc-500 hover:border-b-4 border-blue-400'>
+                  <Link to={data.path} className="text-white block py-2 px-14 text-lg font-normal dark:hover: dark:text-gray-200 dark:hover:text-white">{data.label}</Link>
                 </li>
               ))}
             </ul>
           </div>
-        </div>
-      </nav>
     </div>
   )
 
